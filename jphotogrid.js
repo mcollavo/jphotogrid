@@ -78,10 +78,10 @@
 				},function(){
 					$(this).removeClass(settings.activeClass);
 				});
-			$('.' + settings.activeClass).live('click', function(){				
+			$(document).on('click', '.' + settings.activeClass, function(){				
 				select(this);
 			});
-			$('.' + settings.selectedClass).live('click', function(){
+			$(document).on('click', '.' + settings.selectedClass, function(){
 				hideSelected();
 			});
 			
