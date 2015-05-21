@@ -78,13 +78,23 @@
 				},function(){
 					$(this).removeClass(settings.activeClass);
 				});
-			$(document).on('click', '.' + settings.activeClass, function(){				
-				select(this);
-			});
-			$(document).on('click', '.' + settings.selectedClass, function(){
-				hideSelected();
-			});
 			
+			if( $.isFunction($.fn.on) ) {
+				$(document).on('click', '.' + settings.activeClass, function(){				
+					select(this);
+				});
+				$(document).on('click', '.' + settings.selectedClass, function(){
+					hideSelected();
+				});
+			} else {
+				$('.' + settings.activeClass).live('click', function(){				
+					select(this);
+				});
+				$('.' + settings.selectedClass).live('click', function(){
+					hideSelected();
+				});
+			} 
+
 			$(this).find('div')
 				.hover(function(){
 					$(this).css('opacity', 0);
